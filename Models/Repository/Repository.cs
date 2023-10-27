@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32.SafeHandles;
 using TESTE_MATHEUS_SAMPAIO.Context;
@@ -77,7 +78,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Models.Repository
 
         public async Task<T> FindNoTrackinOneAsync(int id)
         {
-            return await DbSet.FindAsync(id);
+            var i = await DbSet.FindAsync(id);
+            return i;
         }
 
         public async Task<IEnumerable<T>> FindAllAsync()
