@@ -17,20 +17,3 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping
         }
     }
 }
-
-/*
-
-        [Column("EMAIL")]
-        public string? Email_Fornecedor { get; set; }
-
-        [Column("CNPJ")]
-        public int CNPJ { get; set; }
-
-        [Column("State_Registration")]
-        public int Inscricao_Estadual { get; set; }
-
-        [Column("Municipal_Registration")]
-        public int Inscricao_Municipal { get; set; }
-
-        public virtual ICollection<ServicosModel>? ServicosModel { get; set; }
-*/

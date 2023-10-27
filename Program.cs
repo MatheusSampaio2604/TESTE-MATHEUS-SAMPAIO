@@ -23,7 +23,7 @@ builder.Services.AddScoped<IProdutosService, ProdutosService>();
 builder.Services.AddScoped<IServicosService, ServicosService>();
 builder.Services.AddScoped<IUsuariosService, UsuariosService>();
 
-
+builder.Services.AddAutoMapper(typeof(Program));
 
 var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -33,15 +33,6 @@ var configuration = new ConfigurationBuilder()
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
-            });
 
 var app = builder.Build();
 

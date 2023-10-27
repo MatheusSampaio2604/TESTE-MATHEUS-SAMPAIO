@@ -1,5 +1,4 @@
 using AutoMapper;
-using TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping.AutoMapper;
 
 namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.AutoMapper
 {

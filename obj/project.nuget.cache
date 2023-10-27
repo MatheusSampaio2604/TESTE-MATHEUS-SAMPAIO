@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "0xOyS/62thw0NCdt0W/XZFNyK7i69B3vYdW2X74X9SZtFNWH8K5X+kCdxFKmxNwR1HmckVcNaIqM5UTDbClyTQ==",
+  "dgSpecHash": "1FVUUzTYTNx1vU92o4+v39ef/tDTzJMc7zQcn08vExVWqggodZ6qSAHHyWh/2eS/RxY7PAbmCJEq1yIbvqn4gQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\CSP0832\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\CSP0832\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\CSP0832\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\CSP0832\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\CSP0832\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",

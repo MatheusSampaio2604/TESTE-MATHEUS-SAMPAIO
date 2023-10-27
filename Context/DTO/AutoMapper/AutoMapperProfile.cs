@@ -2,7 +2,7 @@
 using TESTE_MATHEUS_SAMPAIO.Models;
 using AutoMapper;
 
-namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping.AutoMapper
+namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.AutoMapper
 {
     public class AutoMapperProfile : Profile
     {
