@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {}
+    "c:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {
+    "c:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
+        "projectUniqueName": "c:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
         "projectName": "TESTE MATHEUS SAMPAIO",
-        "projectPath": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
+        "projectPath": "c:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
         "packagesPath": "C:\\Users\\CSP0832\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\obj\\",
+        "outputPath": "c:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
