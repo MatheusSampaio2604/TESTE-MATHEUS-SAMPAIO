@@ -1,4 +1,3 @@
-using TESTE_MATHEUS_SAMPAIO.Models;
 
 namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 {
