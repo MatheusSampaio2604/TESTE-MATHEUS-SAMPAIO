@@ -21,6 +21,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(k => k.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
+            }
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly, x => x.Namespace == "TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping");
         }
         public void ConfigureServices(IServiceCollection services)

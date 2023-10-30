@@ -7,8 +7,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public required string Nome { get; set; }
 
+        public bool Ativo { get; set; }
 
-        public virtual IEnumerable<UsuariosViewModel>? UsuariosViewModel { get; set; }
+        public virtual ICollection<UsuariosViewModel> UsuariosViewModel { get; set; }
 
     }
 }

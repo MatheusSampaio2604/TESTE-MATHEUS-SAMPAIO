@@ -17,7 +17,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public int Inscricao_Municipal { get; set; }
 
-        public virtual ICollection<ServicosViewModel>? Servicos { get; set; }
-        
+        public bool Ativo { get; set; }
+
+        public virtual IEnumerable<ServicosViewModel>? Servicos { get; set; }
+
+
     }
 }

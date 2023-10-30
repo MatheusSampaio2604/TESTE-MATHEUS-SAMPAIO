@@ -11,7 +11,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public required string Nome { get; set; }
 
-        public virtual IEnumerable<UsuariosModel>? UsuariosModel { get; set; }
+        public bool Ativo { get; set; }
+
+        public virtual ICollection<UsuariosModel> UsuariosModel { get; set; }
 
     }
 }

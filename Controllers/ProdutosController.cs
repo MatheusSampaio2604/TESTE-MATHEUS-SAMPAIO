@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR.Protocol;
 using TESTE_MATHEUS_SAMPAIO.Context;
 using TESTE_MATHEUS_SAMPAIO.Context.DTO;
 using TESTE_MATHEUS_SAMPAIO.Models;
@@ -16,42 +17,61 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
     {
         private readonly DataContext _context;
         private readonly IProdutosService _produtosService;
+        private readonly IFornecedoresService _fornecedoresService;
 
-        public ProdutosController(DataContext context, IProdutosService produtosService)
+        public ProdutosController(DataContext context, IProdutosService produtosService, IFornecedoresService fornecedoresService)
         {
             _context = context;
             _produtosService = produtosService;
+            _fornecedoresService = fornecedoresService;
         }
 
         // GET: Produtos
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            IEnumerable<ProdutosViewModel> item = await _produtosService.FindAllAsync();
+            try
+            {
+                IEnumerable<ProdutosViewModel> item = await _produtosService.FindAllAsync();
 
-            return View(item);
+                return View(item);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
 
         // GET: Produtos/Details/5
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            if (id == 0 || _context.Produtos == null)
-                return NotFound();
+            try
+            {
+                if (id == 0 || _context.Produtos == null)
+                    return NotFound();
 
 
-            var produtosViewModel = await _produtosService.FindOneAsync(id);
+                var produtosViewModel = await _produtosService.FindOneAsync(id);
 
-            if (produtosViewModel == null)
-                return NotFound();
+                if (produtosViewModel == null)
+                    return NotFound();
 
-            return View(produtosViewModel);
+                return View(produtosViewModel);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
 
         // GET: Produtos/Create
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var fornecedores = await _fornecedoresService.FindAllAsync();
+            ViewBag.Fornecedores = fornecedores.Where(x => x.Ativo == true);
+
             return View();
         }
 
@@ -66,28 +86,48 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
             {
                 return View(produtosViewModel);
             }
-            produtosViewModel.Nome.ToUpper();
 
-            var create = await _produtosService.CreateAsync(produtosViewModel);
+            produtosViewModel.Nome = produtosViewModel.Nome.ToUpper();
 
-            if (create is null)
-                return View("Create", produtosViewModel);
-            else
-                return RedirectToAction(nameof(Index));
+            try
+            {
+
+                var create = await _produtosService.CreateAsync(produtosViewModel);
+
+                if (create is null)
+                    return View("Create", produtosViewModel);
+                else
+                    return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
 
         // GET: Produtos/Edit/5
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            if (id == 0 || _context.Produtos == null)
-                return NotFound();
+            try
+            {
+                if (id == 0 || _context.Produtos == null)
+                    return NotFound();
 
-            var produtosViewModel = await _produtosService.FindOneAsync(id);
+                var fornecedores = await _fornecedoresService.FindAllAsync();
+                ViewBag.Fornecedores = fornecedores.Where(x => x.Ativo == true);
 
-            if (produtosViewModel == null)
-                return NotFound();
-            return View(produtosViewModel);
+                var produtosViewModel = await _produtosService.FindOneAsync(id);
+
+                if (produtosViewModel == null)
+                    return NotFound();
+                    
+                return View(produtosViewModel);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
 
         // POST: Produtos/Edit/5
@@ -102,10 +142,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 return View(produtosViewModel);
             }
 
+            produtosViewModel.Nome.ToUpper();
 
             try
             {
-                produtosViewModel.Nome.ToUpper();
+                produtosViewModel.Nome = produtosViewModel.Nome.ToUpper();
 
                 var edit = await _produtosService.EditAsync(produtosViewModel);
 
@@ -115,16 +156,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception e)
             {
-                if (!ProdutosModelExists(produtosViewModel.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e);
             }
         }
 

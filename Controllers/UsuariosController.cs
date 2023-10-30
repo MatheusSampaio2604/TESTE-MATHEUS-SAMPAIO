@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using TESTE_MATHEUS_SAMPAIO.Context;
+using TESTE_MATHEUS_SAMPAIO.Context.DTO;
 using TESTE_MATHEUS_SAMPAIO.Models;
 using TESTE_MATHEUS_SAMPAIO.Services;
 
@@ -27,34 +27,47 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            var depart = await _departamentosService.FindAllAsync() ?? null;
-            ViewBag.Departamentos = depart;
-            return View(await _usuariosService.FindAllAsync());
+            try
+            {
+                return View(await _usuariosService.FindAllAsync());
+            }
+            catch (Exception e)
+            {
+                return View("Error\n", e);
+            }
         }
 
         // GET: Usuarios/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.Usuarios == null)
+            try
             {
-                return NotFound();
-            }
+                if (id == 0 || _context.Usuarios == null)
+                {
+                    return NotFound();
+                }
 
-            var usuariosModel = await _context.Usuarios
-                .Include(u => u.DepartamentosModel)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuariosModel == null)
+                var usuariosViewModel = await _usuariosService.FindOneAsync(id);
+
+                if (usuariosViewModel == null)
+                {
+                    return NotFound();
+                }
+
+                return View(usuariosViewModel);
+            }
+            catch (Exception e)
             {
-                return NotFound();
+                return View("Error: ", e);
             }
-
-            return View(usuariosModel);
         }
 
         // GET: Usuarios/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Departamento"] = new SelectList(_context.Set<DepartamentosModel>(), "Id", "Id");
+            var depart = await _departamentosService.FindAllAsync();
+            ViewBag.Departamentos = depart.Where(x => x.Ativo == true);
+
             return View();
         }
 
@@ -63,33 +76,48 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Matricula,Nome,Departamento")] UsuariosModel usuariosModel)
+        public async Task<IActionResult> Create(UsuariosViewModel usuariosViewModel)
         {
-            if (ModelState.IsValid)
+
+            usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
+
+            try
             {
-                _context.Add(usuariosModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    var success = await _usuariosService.CreateAsync(usuariosViewModel);
+                    if (success != null)
+                        return RedirectToAction(nameof(Index));
+                    else
+                        return BadRequest(error: "Não foi possivel processar sua Solicitação, tente novamente!");
+                }
+
+                return View(usuariosViewModel);
             }
-            ViewData["Departamento"] = new SelectList(_context.Set<DepartamentosModel>(), "Id", "Id", usuariosModel.Departamento);
-            return View(usuariosModel);
+            catch (Exception e)
+            {
+                return View("Error: ", e);
+            }
         }
 
         // GET: Usuarios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null || _context.Usuarios == null)
+            try
             {
-                return NotFound();
+                if (id == 0 || _context.Usuarios == null)
+                {
+                    return NotFound();
+                }
+                var depart = await _departamentosService.FindAllAsync();
+                ViewBag.Departamentos = depart.Where(x => x.Ativo == true);
+                
+                return View(await _usuariosService.FindOneAsync(id));
             }
-
-            var usuariosModel = await _context.Usuarios.FindAsync(id);
-            if (usuariosModel == null)
+            catch (Exception e)
             {
-                return NotFound();
+                return View("Error: ", e);
             }
-            ViewData["Departamento"] = new SelectList(_context.Set<DepartamentosModel>(), "Id", "Id", usuariosModel.Departamento);
-            return View(usuariosModel);
         }
 
         // POST: Usuarios/Edit/5
@@ -97,25 +125,26 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Matricula,Nome,Departamento")] UsuariosModel usuariosModel)
+        public async Task<IActionResult> Edit(int id, UsuariosViewModel usuariosViewModel)
         {
-            if (id != usuariosModel.Id)
+            if (id != usuariosViewModel.Id)
             {
                 return NotFound();
             }
+
+            usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(usuariosModel);
-                    await _context.SaveChangesAsync();
+                    await _usuariosService.EditAsync(usuariosViewModel);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception e)
                 {
-                    if (!UsuariosModelExists(usuariosModel.Id))
+                    if (!UsuariosModelExists(usuariosViewModel.Id))
                     {
-                        return NotFound();
+                        return NotFound(e);
                     }
                     else
                     {
@@ -124,51 +153,47 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Departamento"] = new SelectList(_context.Set<DepartamentosModel>(), "Id", "Id", usuariosModel.Departamento);
-            return View(usuariosModel);
+
+            return View(usuariosViewModel);
         }
 
         // GET: Usuarios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || _context.Usuarios == null)
+            if (id == 0 || _context.Usuarios == null)
             {
                 return NotFound();
             }
 
-            var usuariosModel = await _context.Usuarios
-                .Include(u => u.DepartamentosModel)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuariosModel == null)
+            var delete = await _usuariosService.FindOneAsync(id);
+            if (delete == null)
             {
                 return NotFound();
             }
 
-            return View(usuariosModel);
+            return View(delete);
         }
 
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(UsuariosModel usuariosModel)
         {
-            if (_context.Usuarios == null)
+            try
             {
-                return Problem("Entity set 'DataContext.Usuarios'  is null.");
+                _usuariosService.Remove(usuariosModel);
+                return RedirectToAction(nameof(Index));
             }
-            var usuariosModel = await _context.Usuarios.FindAsync(id);
-            if (usuariosModel != null)
+            catch (Exception e)
             {
-                _context.Usuarios.Remove(usuariosModel);
+                return BadRequest(error: "Não foi possivel completar a sua solicitação, Tente novamente!\n" + e);
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
         }
 
         private bool UsuariosModelExists(int id)
         {
-          return (_context.Usuarios?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Usuarios?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

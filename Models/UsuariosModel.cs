@@ -14,7 +14,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public int Departamento { get; set; }
 
-        public virtual DepartamentosModel? DepartamentosModel { get; set; }
+        public bool Ativo { get; set; }
+
+        public virtual DepartamentosModel DepartamentosModel { get; set; }
 
     }
 }

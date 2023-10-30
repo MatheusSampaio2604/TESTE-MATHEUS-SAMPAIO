@@ -6,7 +6,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
     {
         public int Id { get; set; }
         public required string Nome { get; set; }
-        public string? CodigoGTIN { get; set; }
+        public int CodigoGTIN { get; set; }
         public decimal Valor {get;set;}
         public int Minimo_Estoque { get; set; }
         

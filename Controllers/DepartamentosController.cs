@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TESTE_MATHEUS_SAMPAIO.Context;
+using TESTE_MATHEUS_SAMPAIO.Context.DTO;
 using TESTE_MATHEUS_SAMPAIO.Models;
 using TESTE_MATHEUS_SAMPAIO.Services;
 
@@ -25,25 +26,38 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // GET: Departamentos
         public async Task<IActionResult> Index()
         {
-              return View(await _departamentosService.FindAllAsync());
+            try
+            {
+                return View(await _departamentosService.FindAllAsync());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(error: "Não foi possivel completar a sua solicitação, Tente novamente! \n" + e);
+            }
         }
 
         // GET: Departamentos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.DepartamentosModel == null)
+            try
             {
-                return NotFound();
-            }
+                if (id == 0)
+                {
+                    return NotFound();
+                }
 
-            var departamentosModel = await _context.DepartamentosModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (departamentosModel == null)
+                var departamentosViewModel = await _departamentosService.FindOneAsync(id);
+                if (departamentosViewModel == null)
+                {
+                    return NotFound();
+                }
+
+                return View(departamentosViewModel);
+            }
+            catch (Exception e)
             {
-                return NotFound();
+                return BadRequest(e);
             }
-
-            return View(departamentosModel);
         }
 
         // GET: Departamentos/Create
@@ -57,31 +71,52 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] DepartamentosModel departamentosModel)
+        public async Task<IActionResult> Create(DepartamentosViewModel departamentosViewModel)
         {
-            if (ModelState.IsValid)
+
+            departamentosViewModel.Nome = departamentosViewModel.Nome.ToUpper();
+
+            try
             {
-                _context.Add(departamentosModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (!ModelState.IsValid)
+                {
+                    return View(departamentosViewModel);
+                }
+
+                var create = await _departamentosService.CreateAsync(departamentosViewModel);
+
+                if (create == null)
+                    return BadRequest(error: "Não foi possivel completar a sua solicitação, Tente Novamente!");
+                else
+                    return RedirectToAction(nameof(Index));
             }
-            return View(departamentosModel);
+            catch (Exception e)
+            {
+                return View("Error");
+            }
+
+
         }
 
         // GET: Departamentos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null || _context.DepartamentosModel == null)
+            try
             {
-                return NotFound();
-            }
+                if (id == 0)
+                    return NotFound();
 
-            var departamentosModel = await _context.DepartamentosModel.FindAsync(id);
-            if (departamentosModel == null)
-            {
-                return NotFound();
+                var searchEdit = await _departamentosService.FindOneAsync(id);
+
+                if (searchEdit == null)
+                    return NotFound();
+
+                return View(searchEdit);
             }
-            return View(departamentosModel);
+            catch (Exception e)
+            {
+                return View("Error: ", e);
+            }
         }
 
         // POST: Departamentos/Edit/5
@@ -89,76 +124,59 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] DepartamentosModel departamentosModel)
+        public async Task<IActionResult> Edit(int id, DepartamentosViewModel departamentosViewModel)
         {
-            if (id != departamentosModel.Id)
+            if (id != departamentosViewModel.Id)
             {
                 return NotFound();
             }
+
+            departamentosViewModel.Nome = departamentosViewModel.Nome.ToUpper();
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(departamentosModel);
-                    await _context.SaveChangesAsync();
+                    await _departamentosService.EditAsync(departamentosViewModel);
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception e)
                 {
-                    if (!DepartamentosModelExists(departamentosModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return View("Error: ", e);
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(departamentosModel);
+            return View(departamentosViewModel);
         }
 
         // GET: Departamentos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || _context.DepartamentosModel == null)
-            {
+            if (id == 0)
                 return NotFound();
-            }
 
-            var departamentosModel = await _context.DepartamentosModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (departamentosModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(departamentosModel);
+            return View(await _departamentosService.FindOneAsync(id));
         }
 
         // POST: Departamentos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(DepartamentosModel departamentosModel)
         {
-            if (_context.DepartamentosModel == null)
+            try
             {
-                return Problem("Entity set 'DataContext.DepartamentosModel'  is null.");
+                _departamentosService.Remove(departamentosModel);
+
+                return RedirectToAction(nameof(Index));
             }
-            var departamentosModel = await _context.DepartamentosModel.FindAsync(id);
-            if (departamentosModel != null)
+            catch (Exception e)
             {
-                _context.DepartamentosModel.Remove(departamentosModel);
+                return BadRequest(error: "Não foi possivel completar a sua solicitação, Tente novamente!\n" + e);
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool DepartamentosModelExists(int id)
         {
-          return (_context.DepartamentosModel?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.DepartamentosModel?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

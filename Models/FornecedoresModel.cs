@@ -17,7 +17,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public int Inscricao_Municipal { get; set; }
 
-        public virtual ICollection<ServicosModel>? ServicosModel { get; set; }
+        public bool Ativo { get; set; }
+
+        public virtual IEnumerable<ServicosModel>? ServicosModel { get; set; }
+
 
     }
 }

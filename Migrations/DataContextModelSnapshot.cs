@@ -33,6 +33,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true)
+                        .HasColumnName("Active");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -47,9 +53,16 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true)
+                        .HasColumnName("Active");
 
                     b.Property<int>("CNPJ")
                         .HasColumnType("int")
@@ -85,9 +98,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CodigoGTIN")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Codigo_GTIN");
+                    b.Property<int>("CodigoGTIN")
+                        .HasColumnType("int")
+                        .HasColumnName("Code_GTIN");
 
                     b.Property<int>("Estoque_Atual")
                         .HasColumnType("int")
@@ -152,6 +165,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true)
+                        .HasColumnName("Active");
+
                     b.Property<int>("Departamento")
                         .HasColumnType("int")
                         .HasColumnName("Id_Department");
@@ -178,7 +197,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
                     b.HasOne("TESTE_MATHEUS_SAMPAIO.Models.FornecedoresModel", "FornecedoresModel")
                         .WithMany("ServicosModel")
                         .HasForeignKey("Fornecedor")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("FornecedoresModel");
@@ -189,7 +207,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
                     b.HasOne("TESTE_MATHEUS_SAMPAIO.Models.DepartamentosModel", "DepartamentosModel")
                         .WithMany("UsuariosModel")
                         .HasForeignKey("Departamento")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DepartamentosModel");

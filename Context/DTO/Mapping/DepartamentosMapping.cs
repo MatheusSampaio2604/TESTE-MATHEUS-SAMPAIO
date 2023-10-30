@@ -11,6 +11,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasColumnName("Id");
             builder.Property(x => x.Nome).HasColumnName("Name");
+            builder.Property(x => x.Ativo).HasDefaultValue(1).HasColumnName("Active");
         }
     }
 }

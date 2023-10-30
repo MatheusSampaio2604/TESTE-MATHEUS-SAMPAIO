@@ -11,7 +11,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public int Departamento { get; set; }
 
-        public virtual DepartamentosViewModel? DepartamentosViewModel { get; set; }
+        public bool Ativo { get; set; }
+
+        public virtual DepartamentosViewModel DepartamentosViewModel { get; set; }
 
     }
 }
