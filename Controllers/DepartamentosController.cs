@@ -76,12 +76,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             departamentosViewModel.Nome = departamentosViewModel.Nome.ToUpper();
 
+            if (ModelState.IsValid)
+            {
+                return View(departamentosViewModel);
+            }
             try
             {
-                if (!ModelState.IsValid)
-                {
-                    return View(departamentosViewModel);
-                }
 
                 var create = await _departamentosService.CreateAsync(departamentosViewModel);
 

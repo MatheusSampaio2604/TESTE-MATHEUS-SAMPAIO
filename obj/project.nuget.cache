@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HGtixvdps0EjLBeQ0jEnprX3MftoaaZ6NK/yNgCRoKa6bW/rE5yZYuptdROufvp7vGjxT66UXpinVXrBke8O4g==",
+  "dgSpecHash": "GvfA3fIdsmMPIA69j6tCmIu+t9aKDRLXB9bnzoxQGYT0b1uRS4D1bn8KH5NGsWIVkAAfpmt5BRjJHleGxhZ7tg==",
   "success": true,
   "projectFilePath": "C:\\UTILS\\TESTE-MATHEUS-SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
   "expectedPackageFiles": [
@@ -86,7 +86,6 @@
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\7.0.13\\microsoft.entityframeworkcore.proxies.7.0.13.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.13\\microsoft.entityframeworkcore.relational.7.0.13.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.13\\microsoft.entityframeworkcore.sqlserver.7.0.13.nupkg.sha512",
-    "C:\\Users\\mathe\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.13\\microsoft.entityframeworkcore.tools.7.0.13.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

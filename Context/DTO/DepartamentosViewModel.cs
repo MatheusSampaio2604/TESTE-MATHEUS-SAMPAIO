@@ -1,4 +1,3 @@
-
 namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 {
     public class DepartamentosViewModel
@@ -9,7 +8,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public bool Ativo { get; set; }
 
-        public virtual ICollection<UsuariosViewModel> UsuariosViewModel { get; set; }
+        public virtual IEnumerable<UsuariosViewModel> UsuariosViewModel { get; set; }
 
     }
 }

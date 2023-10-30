@@ -80,19 +80,16 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         {
 
             usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
+            if (ModelState.IsValid) return View(usuariosViewModel);
 
             try
             {
-                if (ModelState.IsValid)
-                {
-                    var success = await _usuariosService.CreateAsync(usuariosViewModel);
-                    if (success != null)
-                        return RedirectToAction(nameof(Index));
-                    else
-                        return BadRequest(error: "Não foi possivel processar sua Solicitação, tente novamente!");
-                }
+                var success = await _usuariosService.CreateAsync(usuariosViewModel);
 
-                return View(usuariosViewModel);
+                if (success != null)
+                    return RedirectToAction(nameof(Index));
+                else
+                    return BadRequest(error: "Não foi possivel processar sua Solicitação, tente novamente!");
             }
             catch (Exception e)
             {
@@ -103,15 +100,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         // GET: Usuarios/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
+            if (id == 0) return NotFound();
+
             try
             {
-                if (id == 0 || _context.Usuarios == null)
-                {
-                    return NotFound();
-                }
                 var depart = await _departamentosService.FindAllAsync();
                 ViewBag.Departamentos = depart.Where(x => x.Ativo == true);
-                
+
                 return View(await _usuariosService.FindOneAsync(id));
             }
             catch (Exception e)
@@ -134,8 +129,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
 
-            if (ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) return View(usuariosViewModel); 
+            
                 try
                 {
                     await _usuariosService.EditAsync(usuariosViewModel);
@@ -152,9 +147,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-
-            return View(usuariosViewModel);
         }
 
         // GET: Usuarios/Delete/5

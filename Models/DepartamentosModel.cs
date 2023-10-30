@@ -13,7 +13,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public bool Ativo { get; set; }
 
-        public virtual ICollection<UsuariosModel> UsuariosModel { get; set; }
+        public virtual IEnumerable<UsuariosModel> UsuariosModel { get; set; }
 
     }
 }
