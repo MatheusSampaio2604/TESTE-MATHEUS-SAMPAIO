@@ -1,41 +1,59 @@
-@model IEnumerable<TESTE_MATHEUS_SAMPAIO.Context.DTO.ProdutosViewModel>
+﻿@model IEnumerable<TESTE_MATHEUS_SAMPAIO.Context.DTO.ProdutosViewModel>
 
+@{
+    ViewData["Title"] = "Index";
+}
 
+<h1>Index</h1>
 
-<body>
-    <div class="container">
-        <h1>Produtos</h1>
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
-        </p>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.First().Nome)</th>
-                    <th>@Html.DisplayNameFor(model => model.First().CodigoGTIN)</th>
-                    <th>@Html.DisplayNameFor(model => model.First().Valor)</th>
-                    <th>@Html.DisplayNameFor(model => model.First().Minimo_Estoque)</th>
-                    <th>@Html.DisplayNameFor(model => model.First().Estoque_Atual)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model) {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-                        <td>@Html.DisplayFor(modelItem => item.CodigoGTIN)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Valor)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Minimo_Estoque)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Estoque_Atual)</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-</body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoGTIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Minimo_Estoque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estoque_Atual)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoGTIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minimo_Estoque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estoque_Atual)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

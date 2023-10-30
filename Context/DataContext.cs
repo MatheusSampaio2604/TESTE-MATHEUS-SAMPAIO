@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Linq;
 using TESTE_MATHEUS_SAMPAIO.Context.DTO.AutoMapper;
@@ -42,6 +42,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Context
             optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.EnableDetailedErrors();
         }
+
+        public DbSet<TESTE_MATHEUS_SAMPAIO.Models.DepartamentosModel> DepartamentosModel { get; set; } = default!;
     }
 
 }

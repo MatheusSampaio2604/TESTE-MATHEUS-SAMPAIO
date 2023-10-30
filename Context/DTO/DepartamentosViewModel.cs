@@ -1,4 +1,3 @@
-using TESTE_MATHEUS_SAMPAIO.Models;
 
 namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 {
@@ -9,7 +8,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public required string Nome { get; set; }
 
 
-        public virtual ICollection<UsuariosViewModel>? UsuariosViewModel { get; set; }
+        public virtual IEnumerable<UsuariosViewModel>? UsuariosViewModel { get; set; }
 
     }
 }
