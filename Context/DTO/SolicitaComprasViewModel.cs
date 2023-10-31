@@ -46,10 +46,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
 
 
-        public required virtual ProdutosViewModel ProdutosViewModel { get; set; }
-        public required virtual FornecedoresViewModel FornecedoresViewModel { get; set; }
-        public required virtual UsuariosViewModel UsuariosViewModel { get; set; }
-        public required virtual DepartamentosViewModel DepartamentosViewModel { get; set; }
+        public required virtual ProdutosViewModel Produtos { get; set; }
+        public required virtual FornecedoresViewModel Fornecedores { get; set; }
+        public required virtual UsuariosViewModel Usuarios { get; set; }
+        public required virtual DepartamentosViewModel Departamentos { get; set; }
 
     }
 }

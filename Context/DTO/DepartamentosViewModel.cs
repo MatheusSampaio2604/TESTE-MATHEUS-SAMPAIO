@@ -14,10 +14,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public bool Ativo { get; set; }
 
-        public required virtual IEnumerable<UsuariosViewModel> UsuariosViewModel { get; set; }
-
-        public required virtual IEnumerable<SolicitaServicosViewModel> SolicitaServicosViewModel { get; set; }
-        public required virtual IEnumerable<SolicitaComprasViewModel> SolicitaComprasViewModel { get; set; }
+        public required virtual IEnumerable<UsuariosViewModel> Usuarios { get; set; }
+        public required virtual IEnumerable<SolicitaServicosViewModel> SolicitaServicos { get; set; }
+        public required virtual IEnumerable<SolicitaComprasViewModel> SolicitaCompras { get; set; }
 
     }
 }

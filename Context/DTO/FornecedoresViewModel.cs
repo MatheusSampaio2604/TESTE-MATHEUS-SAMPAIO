@@ -39,7 +39,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public bool Ativo { get; set; }
 
         public required virtual IEnumerable<ServicosViewModel> Servicos { get; set; }
-        public required virtual IEnumerable<SolicitaComprasViewModel> SolicitaComprasViewModel { get; set; }
+        public required virtual IEnumerable<SolicitaComprasViewModel> SolicitaCompras { get; set; }
 
     }
 }
