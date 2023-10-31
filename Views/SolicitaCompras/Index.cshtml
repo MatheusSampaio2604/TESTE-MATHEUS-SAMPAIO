@@ -59,16 +59,16 @@
                 @Html.DisplayFor(modelItem => item.Ativo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Produtos.Nome)
+                @Html.DisplayFor(modelItem => item.ProdutosModel.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fornecedores.Nome)
+                @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuarios.Nome)
+                @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Departamentos.Nome)
+                @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
