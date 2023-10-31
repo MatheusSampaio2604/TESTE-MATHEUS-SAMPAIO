@@ -100,19 +100,5 @@
 }
 else
 {
-    <div class="empty-list d-flex align-items-center justify-content-center" style="height: 100vh;">
-        <div class="text-center">
-            <div class="loading-spinner "></div>
-            <p id="empty-list-message">Aguarde! buscando informações...</p>
-        </div>
-    </div>
-    <script>
-        setTimeout(function () {
-            var messageElement = document.getElementById("empty-list-message");
-            if (messageElement) {
-                messageElement.textContent = "Não encontrei dados para essa pesquisa.";
-            }
-        }, 4000); // 4000 milissegundos (4 segundos)
-    </script>
-
+    @await Html.PartialAsync("../Fragments/NothingData")
 }

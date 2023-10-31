@@ -4,88 +4,102 @@
     ViewData["Title"] = "Index";
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Codigo_Solicitacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodigoGTIN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fabricante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Produto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Fornecedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Departamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aprovado)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Codigo_Solicitacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoGTIN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fabricante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantidade)
-            </td>
-            <td>
-                @if (item.Ativo) { <p>Sim</p> }
-                else { <p>Não</p> }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdutosModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
-            </td>
-            <td>
-                @if (item.Aprovado)
-                {
-                    <p>Aprovado</p>
-                }
-                else
-                {
-                    <p>Aguardando Análise</p>
-                }
-            </td>
-            <td>
-                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-            </td>
-        </tr>
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Codigo_Solicitacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoGTIN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fabricante)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Produto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Fornecedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Departamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aprovado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo_Solicitacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoGTIN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fabricante)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                    <td>
+                        @if (item.Ativo)
+                        {
+                            <p>Sim</p>
+                        }
+                        else
+                        {
+                            <p>Não</p>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdutosModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
+                    </td>
+                    <td>
+                        @if (item.Aprovado)
+                        {
+                            <p>Aprovado</p>
+                        }
+                        else
+                        {
+                            <p>Aguardando Análise</p>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{
+    @await Html.PartialAsync("../Fragments/NothingData")
+}

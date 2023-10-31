@@ -4,70 +4,90 @@
     ViewData["Title"] = "Index";
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoServico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Observacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fornecedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Departamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data_Cadastro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aprovado)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServicosModel.Nome_Servico)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data_Cadastro)
-            </td>
-            <td>
-                @if (item.Ativo) { <p>Sim</p> }
-                else { <p>Não</p> }
-            </td>
-            <td>
-                @if (item.Aprovado) { <p>Aprovado</p> }
-                else { <p>Aguardando Análise</p> }
-            </td>
-            <td>
-                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-            </td>
-        </tr>
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoServico)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Observacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fornecedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Departamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_Cadastro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aprovado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServicosModel.Nome_Servico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Observacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_Cadastro)
+                    </td>
+                    <td>
+                        @if (item.Ativo)
+                        {
+                            <p>Sim</p>
+                        }
+                        else
+                        {
+                            <p>Não</p>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Aprovado)
+                        {
+                            <p>Aprovado</p>
+                        }
+                        else
+                        {
+                            <p>Aguardando Análise</p>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{
+    @await Html.PartialAsync("../Fragments/NothingData")
+}
