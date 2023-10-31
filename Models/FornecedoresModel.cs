@@ -20,9 +20,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public bool Ativo { get; set; }
 
-        public virtual IEnumerable<ServicosModel> ServicosModel { get; set; }
-
-        public virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel {get;set;}
+        public required virtual IEnumerable<ServicosModel> ServicosModel { get; set; }
+        public required virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel {get;set;}
 
     }
 }

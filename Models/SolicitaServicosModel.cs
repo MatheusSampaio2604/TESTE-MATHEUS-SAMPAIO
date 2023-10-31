@@ -16,9 +16,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
         public bool Ativo { get; set; }
 
 
-        public virtual ServicosModel ServicosModel { get; set; }
-        public virtual UsuariosModel UsuariosModel { get; set; }
-        public virtual DepartamentosModel DepartamentosModel { get; set; }
+        public required virtual ServicosModel ServicosModel { get; set; }
+        public required virtual UsuariosModel UsuariosModel { get; set; }
+        public required virtual DepartamentosModel DepartamentosModel { get; set; }
 
     }
 }

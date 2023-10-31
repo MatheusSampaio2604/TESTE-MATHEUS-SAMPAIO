@@ -27,9 +27,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public int Fornecedor { get; set; }
 
 
-        public virtual FornecedoresViewModel Fornecedores { get; set; }
-
-        public virtual IEnumerable<SolicitaServicosViewModel> SolicitaServicosViewModel { get; set; }
+        public required virtual FornecedoresViewModel Fornecedores { get; set; }
+        public required virtual IEnumerable<SolicitaServicosViewModel> SolicitaServicosViewModel { get; set; }
 
     }
 }

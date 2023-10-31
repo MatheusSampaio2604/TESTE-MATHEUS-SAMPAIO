@@ -18,10 +18,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
         public bool Ativo { get; set; }
 
 
-        public virtual ProdutosModel ProdutosModel {get;set;}
-        public virtual FornecedoresModel FornecedoresModel { get; set; }
-        public virtual UsuariosModel UsuariosModel { get; set; }
-        public virtual DepartamentosModel DepartamentosModel { get; set; }
+        public required virtual ProdutosModel ProdutosModel {get;set;}
+        public required virtual FornecedoresModel FornecedoresModel { get; set; }
+        public required virtual UsuariosModel UsuariosModel { get; set; }
+        public required virtual DepartamentosModel DepartamentosModel { get; set; }
 
     }
 }

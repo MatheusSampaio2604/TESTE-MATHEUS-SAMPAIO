@@ -26,10 +26,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public bool Ativo { get; set; }
 
-        public virtual DepartamentosViewModel DepartamentosViewModel { get; set; }
-
-        public virtual IEnumerable<SolicitaServicosViewModel> SolicitaServicosViewModel { get; set; }
-        public virtual IEnumerable<SolicitaComprasViewModel> SolicitaComprasViewModel { get; set; }
+        public required virtual DepartamentosViewModel DepartamentosViewModel { get; set; }
+        public required virtual IEnumerable<SolicitaServicosViewModel> SolicitaServicosViewModel { get; set; }
+        public required virtual IEnumerable<SolicitaComprasViewModel> SolicitaComprasViewModel { get; set; }
 
     }
 }

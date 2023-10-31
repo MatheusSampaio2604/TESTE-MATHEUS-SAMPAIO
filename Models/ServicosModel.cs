@@ -16,10 +16,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
         public int Fornecedor { get; set; }
 
 
-        public virtual FornecedoresModel FornecedoresModel { get; set; }
-
-
-        public virtual IEnumerable<SolicitaServicosModel> SolicitaServicosModel { get; set; }
+        public required virtual FornecedoresModel FornecedoresModel { get; set; }
+        public required virtual IEnumerable<SolicitaServicosModel> SolicitaServicosModel { get; set; }
 
     }
 }

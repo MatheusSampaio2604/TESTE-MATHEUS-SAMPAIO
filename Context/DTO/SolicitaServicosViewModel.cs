@@ -39,9 +39,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
 
 
-        public virtual ServicosViewModel ServicosViewModel { get; set; }
-        public virtual UsuariosViewModel UsuariosViewModel { get; set; }
-        public virtual DepartamentosViewModel DepartamentosViewModel { get; set; }
+        public required virtual ServicosViewModel ServicosViewModel { get; set; }
+        public required virtual UsuariosViewModel UsuariosViewModel { get; set; }
+        public required virtual DepartamentosViewModel DepartamentosViewModel { get; set; }
 
     }
 }

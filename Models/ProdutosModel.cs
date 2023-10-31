@@ -18,6 +18,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public long Estoque_Atual { get; set; }
 
-        public virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel {get;set;}
+        public required virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel {get;set;}
     }
 }
