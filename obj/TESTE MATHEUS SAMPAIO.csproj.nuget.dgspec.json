@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\UTILS\\TESTE-MATHEUS-SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {}
+    "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {}
   },
   "projects": {
-    "C:\\UTILS\\TESTE-MATHEUS-SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {
+    "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\UTILS\\TESTE-MATHEUS-SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
+        "projectUniqueName": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
         "projectName": "TESTE MATHEUS SAMPAIO",
-        "projectPath": "C:\\UTILS\\TESTE-MATHEUS-SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
-        "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "C:\\UTILS\\TESTE-MATHEUS-SAMPAIO\\obj\\",
+        "projectPath": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\TESTE MATHEUS SAMPAIO.csproj",
+        "packagesPath": "C:\\Users\\CSP0832\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CSP0832\\Desktop\\TESTE MATHEUS SAMPAIO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\CSP0832\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -94,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
