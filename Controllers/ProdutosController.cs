@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -67,11 +68,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
         // GET: Produtos/Create
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            var fornecedores = await _fornecedoresService.FindAllAsync();
-            ViewBag.Fornecedores = fornecedores.Where(x => x.Ativo == true);
-
             return View();
         }
 
@@ -82,7 +80,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(ProdutosViewModel produtosViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return View(produtosViewModel);
             }
@@ -114,14 +112,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 if (id == 0 || _context.Produtos == null)
                     return NotFound();
 
-                var fornecedores = await _fornecedoresService.FindAllAsync();
-                ViewBag.Fornecedores = fornecedores.Where(x => x.Ativo == true);
+
 
                 var produtosViewModel = await _produtosService.FindOneAsync(id);
 
                 if (produtosViewModel == null)
                     return NotFound();
-                    
+
                 return View(produtosViewModel);
             }
             catch (Exception e)
@@ -137,12 +134,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProdutosViewModel produtosViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(produtosViewModel);
-            }
+            // if (!ModelState.IsValid)
+            // {
+            //     return View(produtosViewModel);
+            // }
 
-            produtosViewModel.Nome.ToUpper();
+
+           
 
             try
             {
@@ -189,6 +187,24 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         private bool ProdutosModelExists(int id)
         {
             return (_context.Produtos?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> AtualizaEstoque()
+        {
+            return View(await _produtosService.FindAllAsync());
+        }
+        public async Task<IActionResult> EditarEstoque(int id)
+        {
+            try
+            {
+                var produtosViewModel = await _produtosService.FindOneAsync(id);
+
+                return View(produtosViewModel);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
         }
     }
 }

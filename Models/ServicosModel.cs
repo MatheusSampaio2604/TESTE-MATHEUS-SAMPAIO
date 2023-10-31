@@ -7,16 +7,19 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
     {
         public int Id { get; set; }
 
-        public string? Nome_Servico { get; set; }
+        public required string Nome_Servico { get; set; }
 
-        public string? Descricao_Servico { get; set; }
-        
-        public decimal Prazo_Entrega {get;set;}
-        
+        public required string Descricao_Servico { get; set; }
+
+        public int Prazo_Entrega { get; set; }
+
         public int Fornecedor { get; set; }
-        
-        
-        public virtual FornecedoresModel? FornecedoresModel { get; set; }
+
+
+        public virtual FornecedoresModel FornecedoresModel { get; set; }
+
+
+        public virtual IEnumerable<SolicitaServicosModel> SolicitaServicosModel { get; set; }
 
     }
 }

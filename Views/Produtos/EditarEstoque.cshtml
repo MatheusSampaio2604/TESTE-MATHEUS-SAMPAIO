@@ -1,0 +1,48 @@
+﻿@model TESTE_MATHEUS_SAMPAIO.Context.DTO.ProdutosViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-4">
+    <h1>Edit - @Model.Nome</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Nome" />
+                <input type="hidden" asp-for="CodigoGTIN" />
+                <input type="hidden" asp-for="Valor" />
+                <input type="hidden" asp-for="Minimo_Estoque" />
+
+                <div class="form-group">
+                    <label asp-for="Estoque_Atual" class="control-label">Estoque Atual</label>
+                    <input asp-for="Estoque_Atual" class="form-control" min="@Model.Minimo_Estoque" />
+                    <span asp-validation-for="Estoque_Atual" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <p>
+                        Estoque Mínimo de @Model.Nome: <strong>@Model.Minimo_Estoque</strong>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a asp-action="AtualizaEstoque" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

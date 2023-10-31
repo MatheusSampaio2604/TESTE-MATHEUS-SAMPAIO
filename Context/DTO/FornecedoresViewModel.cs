@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using TESTE_MATHEUS_SAMPAIO.Models;
 
 namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
@@ -7,20 +9,37 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
 
         public int Id { get; set; }
 
-        public string? Nome_Fornecedor { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [DisplayName("NOME")]
+        [MaxLength(75)]
+        public required string Nome { get; set; }
 
-        public string? Email_Fornecedor { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [MinLength(5)]
+        [DisplayName("EMAIL")]
+        [EmailAddress]
+        public required string Email { get; set; }
 
-        public int CNPJ { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [MaxLength(14)]
+        [DisplayName("CNPJ")]
+        public required string CNPJ { get; set; }
 
-        public int Inscricao_Estadual { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [MaxLength(10)]
+        [DisplayName("INSCRIÇÃO ESTADUAL")]
+        public required string Inscricao_Estadual { get; set; }
 
-        public int Inscricao_Municipal { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [MinLength(6)]
+        [MaxLength(12)]
+        [DisplayName("INSCRIÇÃO MUNICIPAL")]
+        public required string Inscricao_Municipal { get; set; }
 
         public bool Ativo { get; set; }
 
-        public virtual IEnumerable<ServicosViewModel>? Servicos { get; set; }
-
+        public virtual IEnumerable<ServicosViewModel> Servicos { get; set; }
+        public virtual IEnumerable<SolicitaComprasViewModel> SolicitaComprasViewModel { get; set; }
 
     }
 }

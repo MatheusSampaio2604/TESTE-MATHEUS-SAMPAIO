@@ -16,6 +16,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context
         public DbSet<ServicosModel> Servicos { get; set; }
         public DbSet<UsuariosModel> Usuarios { get; set; }
         public DbSet<FornecedoresModel> Fornecedores { get; set; }
+        public DbSet<SolicitaComprasModel> SolicitaCompras { get; set; }
+        public DbSet<SolicitaServicosModel> SolicitaServicos { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

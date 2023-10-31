@@ -57,7 +57,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(FornecedoresViewModel fornecedoresViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var created = await _fornecedoresService.CreateAsync(fornecedoresViewModel);
                 if (created != null)

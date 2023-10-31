@@ -17,7 +17,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.AutoMapper
             CreateMap<FornecedoresModel, FornecedoresViewModel>().ReverseMap();
 
             CreateMap<DepartamentosModel, DepartamentosViewModel>().ReverseMap();
+            
+            CreateMap<SolicitaComprasModel, SolicitaComprasViewModel>().ReverseMap();
+            
+            CreateMap<SolicitaServicosModel, SolicitaServicosViewModel>().ReverseMap();
 
+            
 
         }
     }

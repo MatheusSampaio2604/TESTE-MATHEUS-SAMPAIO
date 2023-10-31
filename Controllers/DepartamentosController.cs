@@ -90,7 +90,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 else
                     return RedirectToAction(nameof(Index));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return View("Error");
             }

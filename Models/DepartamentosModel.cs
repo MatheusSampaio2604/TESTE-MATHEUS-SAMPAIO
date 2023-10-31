@@ -15,5 +15,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public virtual IEnumerable<UsuariosModel> UsuariosModel { get; set; }
 
+        public virtual IEnumerable<SolicitaServicosModel> SolicitaServicosModel { get; set; }
+        public virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel { get; set; }
     }
 }
