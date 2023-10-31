@@ -25,8 +25,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping
             builder.Property(x => x.Id_Fornecedor).HasColumnName("Supplier_Id");
             builder.Property(x => x.Id_Usuario).HasColumnName("User_Id");
             builder.Property(x => x.Id_Departamento).HasColumnName("Department_Id");
-
+            
             builder.Property(x => x.Ativo).HasDefaultValue(1).HasColumnName("Active");
+            builder.Property(x => x.Aprovado).HasDefaultValue(0).HasColumnName("Approved");
         }
     }
 }

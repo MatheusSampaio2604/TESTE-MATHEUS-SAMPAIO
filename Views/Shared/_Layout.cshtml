@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,21 +20,38 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
+                            <a class="nav-link text-dark" asp-controller="Produtos" asp-action="Index">Produtos</a>
                         </li>
                         <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Solicitacoes">Fazer Solicitação</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Solicitacoes">Fazer Solicitação</a>
                         </li>
                         <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="AtualizaEstoque">Alterar Estoque</a>
+                            <a class="nav-link text-dark" asp-controller="Produtos" asp-action="AtualizaEstoque">Alterar Estoque</a>
                         </li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADM</a>
+                        <li>
+                            <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicos</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuários</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Departamentos" asp-action="Index">Departamentos</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Fornecedores" asp-action="Index">Fornecedores</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Servicos" asp-action="Index">Serviços Disponíveis</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="SolicitaServicos" asp-action="Index">Serviços em Aberto</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="SolicitaServicos" asp-action="IndexServicoAprovados">Serviços Aprovados</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compras</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="SolicitaCompras" asp-action="Index">Pedidos de Compra em Aberto</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="SolicitaCompras" asp-action="IndexCompraAprovados">Pedidos de Compra Aprovados</a></li>
+                            </ul>
+                        </li>
+                      
+                            
+                     
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADM</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Index">Usuários</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Departamentos" asp-action="Index">Departamentos</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Fornecedores" asp-action="Index">Fornecedores</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark" asp-controller="Servicos" asp-action="Index">Serviços Disponíveis</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -50,7 +67,7 @@
 
     <footer class="border-bottom footer text-muted">
         <div class="container">
-            &copy; 2023 - MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a>
+            &copy; 2023 - MVC - <a asp-controller="Home" asp-action="Privacy">Privacidade</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

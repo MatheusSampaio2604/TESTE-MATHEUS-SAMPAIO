@@ -10,10 +10,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public required string Codigo_Solicitacao { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
-        [MinLength(8)]
-        [MaxLength(14)]
+        [MinLength(8, ErrorMessage ="Verifique o Código")]
+        [MaxLength(14, ErrorMessage ="Verifique o Código")]
         [DisplayName("CODIGO GTIN")]
-        public long CodigoGTIN { get; set; }
+        public required string CodigoGTIN { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
         [MaxLength(50)]
@@ -21,11 +21,14 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public required string Fabricante { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
-        [MaxLength(50)]
         [DisplayName("QUANTIDADE")]
         public int Quantidade { get; set; }
 
+        [DisplayName("ATIVO")]
         public bool Ativo { get; set; }
+        
+        [DisplayName("APROVADO")]
+        public bool Aprovado {get;set;}
 
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]

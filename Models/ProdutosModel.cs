@@ -10,13 +10,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public required string Nome { get; set; }
 
-        public long CodigoGTIN { get; set; }
+        public required string CodigoGTIN { get; set; }
 
         public decimal Valor { get; set; }
 
         public int Minimo_Estoque { get; set; }
 
-        public long Estoque_Atual { get; set; }
+        public int Estoque_Atual { get; set; }
 
         public required virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel {get;set;}
     }

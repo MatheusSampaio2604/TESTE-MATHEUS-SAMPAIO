@@ -17,7 +17,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         [MinLength(8)]
         [MaxLength(14)]
         [DisplayName("CODIGO GTIN")]
-        public long CodigoGTIN { get; set; }
+        public required string CodigoGTIN { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
         [DisplayName("VALOR")]

@@ -13,6 +13,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping
             builder.HasOne(x => x.ServicosModel).WithMany(x => x.SolicitaServicosModel).HasForeignKey(x => x.TipoServico);
             builder.HasOne(x => x.UsuariosModel).WithMany(x => x.SolicitaServicosModel).HasForeignKey(x => x.Id_Usuario);
             builder.HasOne(x => x.DepartamentosModel).WithMany(x => x.SolicitaServicosModel).HasForeignKey(x => x.Id_Departamento);
+            builder.HasOne(x => x.FornecedoresModel).WithMany(x => x.SolicitaServicosModel).HasForeignKey(x => x.Fornecedor);
 
             builder.Property(x => x.Id).HasColumnName("Id");
             builder.Property(x => x.Observacao).HasColumnName("Observation");
@@ -22,6 +23,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping
             builder.Property(x => x.Id_Usuario).HasColumnName("User_Id");
             builder.Property(x => x.Id_Departamento).HasColumnName("Department_Id");
             builder.Property(x => x.Ativo).HasDefaultValue(1).HasColumnName("Active");
+            builder.Property(x => x.Aprovado).HasDefaultValue(0).HasColumnName("Approved");
         }
     }
 }

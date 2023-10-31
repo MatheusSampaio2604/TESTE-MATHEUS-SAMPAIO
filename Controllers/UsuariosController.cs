@@ -129,24 +129,24 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
 
-            if (!ModelState.IsValid) return View(usuariosViewModel); 
-            
-                try
+            if (!ModelState.IsValid) return View(usuariosViewModel);
+
+            try
+            {
+                await _usuariosService.EditAsync(usuariosViewModel);
+            }
+            catch (Exception e)
+            {
+                if (!UsuariosModelExists(usuariosViewModel.Id))
                 {
-                    await _usuariosService.EditAsync(usuariosViewModel);
+                    return NotFound(e);
                 }
-                catch (Exception e)
+                else
                 {
-                    if (!UsuariosModelExists(usuariosViewModel.Id))
-                    {
-                        return NotFound(e);
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Usuarios/Delete/5

@@ -27,7 +27,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Fornecedor" class="control-label"></label>
-                <select asp-for="Fornecedor" class ="form-control" asp-items="ViewBag.Fornecedor"></select>
+                <select asp-for="Fornecedor" class ="form-control" asp-items="@(new SelectList(ViewBag.Fornecedor, "Id", "Nome"))">
+                    <option selected disabled value="">Selecione</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -37,5 +39,5 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-info" asp-action="Index">Voltar</a>
 </div>

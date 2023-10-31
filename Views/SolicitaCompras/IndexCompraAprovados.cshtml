@@ -35,7 +35,7 @@
                 @Html.DisplayNameFor(model => model.Id_Departamento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aprovado)
+                Situação
             </th>
             <th></th>
         </tr>
@@ -55,7 +55,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantidade)
             </td>
-            <td>
+            <td>item
                 @if (item.Ativo) { <p>Sim</p> }
                 else { <p>Não</p> }
             </td>
@@ -82,7 +82,6 @@
                 }
             </td>
             <td>
-                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
                 <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
             </td>
         </tr>

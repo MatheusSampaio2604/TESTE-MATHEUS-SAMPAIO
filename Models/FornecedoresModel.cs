@@ -22,6 +22,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
 
         public required virtual IEnumerable<ServicosModel> ServicosModel { get; set; }
         public required virtual IEnumerable<SolicitaComprasModel> SolicitaComprasModel {get;set;}
+        public required virtual IEnumerable<SolicitaServicosModel> SolicitaServicosModel { get; set; }
 
     }
 }

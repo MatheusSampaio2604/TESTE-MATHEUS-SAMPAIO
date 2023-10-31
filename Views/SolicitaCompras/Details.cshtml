@@ -36,7 +36,8 @@
             @Html.DisplayNameFor(model => model.Ativo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ativo)
+            @if (Model.Ativo) { <p>Sim</p> }
+                else { <p>Não</p> }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Id_Produto)
@@ -62,9 +63,21 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DepartamentosModel.Nome)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Aprovado)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Aprovado)
+            {
+                <p>Aprovado</p>
+            }
+            else
+            {
+                <p>Em Análise</p>
+            }
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-info" asp-action="Index">Voltar</a>
 </div>

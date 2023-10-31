@@ -16,17 +16,27 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
     {
         private readonly DataContext _context;
         private readonly ISolicitaComprasService _solicitaComprasService;
+        private readonly IDepartamentosService _departamentosService;
+        private readonly IFornecedoresService _fornecedoresService;
+        private readonly IUsuariosService _usuariosService;
+        private readonly IProdutosService _produtosService;
 
-        public SolicitaComprasController(DataContext context, ISolicitaComprasService solicitaComprasService)
+
+        public SolicitaComprasController(DataContext context, ISolicitaComprasService solicitaComprasService, IDepartamentosService departamentosService, IFornecedoresService fornecedoresService, IProdutosService produtosService, IUsuariosService usuariosService)
         {
             _context = context;
             _solicitaComprasService = solicitaComprasService;
+            _departamentosService = departamentosService;
+            _fornecedoresService = fornecedoresService;
+            _produtosService = produtosService;
+            _usuariosService = usuariosService;
         }
 
         // GET: SolicitaCompras
         public async Task<IActionResult> Index()
         {
-            return View(await _solicitaComprasService.FindAllAsync());
+            var index = await _solicitaComprasService.FindAllAsync();
+            return View(index.Where(x => x.Aprovado == false));
         }
 
         // GET: SolicitaCompras/Details/5
@@ -42,12 +52,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         }
 
         // GET: SolicitaCompras/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome");
-            ViewData["Id_Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Nome_Fornecedor");
-            ViewData["Id_Produto"] = new SelectList(_context.Produtos, "Id", "Nome");
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome");
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var produto = await _produtosService.FindAllAsync(); ViewBag.Produto = produto;
+
             return View();
         }
 
@@ -58,17 +69,19 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SolicitaComprasViewModel solicitaComprasViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var save = await _solicitaComprasService.CreateAsync(solicitaComprasViewModel);
 
                 if (save == null) return View(solicitaComprasViewModel);
                 else return RedirectToAction(nameof(Index));
             }
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Id", solicitaComprasViewModel.Id_Departamento);
-            ViewData["Id_Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Id", solicitaComprasViewModel.Id_Fornecedor);
-            ViewData["Id_Produto"] = new SelectList(_context.Produtos, "Id", "Id", solicitaComprasViewModel.Id_Produto);
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Id", solicitaComprasViewModel.Id_Usuario);
+
+
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var produto = await _produtosService.FindAllAsync(); ViewBag.Produto = produto;
             return View(solicitaComprasViewModel);
         }
 
@@ -84,10 +97,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             if (solicitaComprasViewModel == null) return NotFound();
 
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome", solicitaComprasViewModel.Id_Departamento);
-            ViewData["Id_Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Nome_Fornecedor", solicitaComprasViewModel.Id_Fornecedor);
-            ViewData["Id_Produto"] = new SelectList(_context.Produtos, "Id", "Nome", solicitaComprasViewModel.Id_Produto);
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome", solicitaComprasViewModel.Id_Usuario);
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var produto = await _produtosService.FindAllAsync(); ViewBag.Produto = produto;
             return View(solicitaComprasViewModel);
         }
 
@@ -103,7 +116,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
@@ -122,10 +135,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome", solicitaComprasViewModel.Id_Departamento);
-            ViewData["Id_Fornecedor"] = new SelectList(_context.Fornecedores, "Nome_Fornecedor", "Id", solicitaComprasViewModel.Id_Fornecedor);
-            ViewData["Id_Produto"] = new SelectList(_context.Produtos, "Id", "Nome", solicitaComprasViewModel.Id_Produto);
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome", solicitaComprasViewModel.Id_Usuario);
+
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var produto = await _produtosService.FindAllAsync(); ViewBag.Produto = produto;
             return View(solicitaComprasViewModel);
         }
 
@@ -161,6 +175,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         private bool SolicitaComprasModelExists(int id)
         {
             return (_context.SolicitaCompras?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> IndexCompraAprovados()
+        {
+            var aprovados = await _solicitaComprasService.FindAllAsync();
+            return View(aprovados.Where(x => x.Aprovado == true));
         }
     }
 }

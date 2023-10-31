@@ -16,12 +16,16 @@ builder.Services.AddScoped<IFornecedoresRepository, FornecedoresRepository>();
 builder.Services.AddScoped<IProdutosRepository, ProdutosRepository>();
 builder.Services.AddScoped<IServicosRepository, ServicosRepository>();
 builder.Services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+builder.Services.AddScoped<ISolicitaComprasRepository, SolicitaComprasRepository>();
+builder.Services.AddScoped<ISolicitaServicosRepository, SolicitaServicosRepository>();
 
 builder.Services.AddScoped<IDepartamentosService, DepartamentosService>();
 builder.Services.AddScoped<IFornecedoresService, FornecedoresService>();
 builder.Services.AddScoped<IProdutosService, ProdutosService>();
 builder.Services.AddScoped<IServicosService, ServicosService>();
 builder.Services.AddScoped<IUsuariosService, UsuariosService>();
+builder.Services.AddScoped<ISolicitaComprasService, SolicitaComprasService>();
+builder.Services.AddScoped<ISolicitaServicosService, SolicitaServicosService>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 

@@ -18,7 +18,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         [DisplayName("DATA CADASTRO")]
         public DateTime Data_Cadastro { get; set; }
 
+        [DisplayName("ATIVO")]
         public bool Ativo { get; set; }
+
+        [DisplayName("APROVADO")]
+        public bool Aprovado { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
         [DisplayName("FORNECEDOR")]
@@ -34,7 +38,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public int Id_Usuario { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
-        [DisplayName("DEPARTAMENTO USUARIO")]
+        [DisplayName("DEPARTAMENTO")]
         public int Id_Departamento { get; set; }
 
 
@@ -42,6 +46,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public required virtual ServicosViewModel ServicosModel { get; set; }
         public required virtual UsuariosViewModel UsuariosModel { get; set; }
         public required virtual DepartamentosViewModel DepartamentosModel { get; set; }
+        public required virtual FornecedoresViewModel FornecedoresModel { get; set; }
 
     }
 }

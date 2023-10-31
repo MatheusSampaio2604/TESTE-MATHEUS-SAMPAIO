@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TESTE_MATHEUS_SAMPAIO.Context;
 using TESTE_MATHEUS_SAMPAIO.Context.DTO;
@@ -16,17 +11,26 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
     {
         private readonly DataContext _context;
         private readonly ISolicitaServicosService _solicitaServicosService;
+        private readonly IDepartamentosService _departamentosService;
+        private readonly IServicosService _servicosService;
+        private readonly IUsuariosService _usuariosService;
+        private readonly IFornecedoresService _fornecedoresService;
 
-        public SolicitaServicosController(DataContext context, ISolicitaServicosService solicitaServicosService)
+        public SolicitaServicosController(DataContext context, ISolicitaServicosService solicitaServicosService, IDepartamentosService departamentosService, IServicosService servicosService, IUsuariosService usuariosService, IFornecedoresService fornecedoresService)
         {
             _context = context;
             _solicitaServicosService = solicitaServicosService;
+            _departamentosService = departamentosService;
+            _servicosService = servicosService;
+            _usuariosService = usuariosService;
+            _fornecedoresService = fornecedoresService;
         }
 
         // GET: SolicitaServicos
         public async Task<IActionResult> Index()
         {
-            return View(await _solicitaServicosService.FindAllAsync());
+            var index = await _solicitaServicosService.FindAllAsync();
+            return View(index.Where(x => x.Aprovado == false));
         }
 
         // GET: SolicitaServicos/Details/5
@@ -42,11 +46,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         }
 
         // GET: SolicitaServicos/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome");
-            ViewData["TipoServico"] = new SelectList(_context.Servicos, "Id", "Nome");
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome");
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var servico = await _servicosService.FindAllAsync(); ViewBag.Servico = servico;
+
             return View();
         }
 
@@ -57,7 +63,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SolicitaServicosViewModel solicitaServicosViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var save = await _solicitaServicosService.CreateAsync(solicitaServicosViewModel);
 
@@ -66,9 +72,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 else return RedirectToAction(nameof(Index));
             }
 
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome", solicitaServicosViewModel.Id_Departamento);
-            ViewData["TipoServico"] = new SelectList(_context.Servicos, "Id", "Nome", solicitaServicosViewModel.TipoServico);
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome", solicitaServicosViewModel.Id_Usuario);
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var servico = await _servicosService.FindAllAsync(); ViewBag.Servico = servico;
             return View(solicitaServicosViewModel);
         }
 
@@ -81,9 +88,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             if (solicitaServicosViewModel == null) return NotFound();
 
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome", solicitaServicosViewModel.Id_Departamento);
-            ViewData["TipoServico"] = new SelectList(_context.Servicos, "Id", "Nome", solicitaServicosViewModel.TipoServico);
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome", solicitaServicosViewModel.Id_Usuario);
+
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var servico = await _servicosService.FindAllAsync(); ViewBag.Servico = servico;
             return View(solicitaServicosViewModel);
         }
 
@@ -111,9 +120,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Id_Departamento"] = new SelectList(_context.DepartamentosModel, "Id", "Nome", solicitaServicosViewModel.Id_Departamento);
-            ViewData["TipoServico"] = new SelectList(_context.Servicos, "Id", "Nome", solicitaServicosViewModel.TipoServico);
-            ViewData["Id_Usuario"] = new SelectList(_context.Usuarios, "Id", "Nome", solicitaServicosViewModel.Id_Usuario);
+
+            var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+            var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
+            var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
+            var servico = await _servicosService.FindAllAsync(); ViewBag.Servico = servico;
             return View(solicitaServicosViewModel);
         }
 
@@ -150,6 +161,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         private bool SolicitaServicosModelExists(int id)
         {
             return (_context.SolicitaServicos?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> IndexServicoAprovados()
+        {
+            var aprovados = await _solicitaServicosService.FindAllAsync();
+            return View(aprovados.Where(x => x.Aprovado == true));
         }
     }
 }

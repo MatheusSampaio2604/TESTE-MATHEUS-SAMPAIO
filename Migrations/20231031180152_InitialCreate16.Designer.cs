@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TESTE_MATHEUS_SAMPAIO.Context;
 
@@ -11,9 +12,11 @@ using TESTE_MATHEUS_SAMPAIO.Context;
 namespace TESTE_MATHEUS_SAMPAIO.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231031180152_InitialCreate16")]
+    partial class InitialCreate16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,12 +177,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Aprovado")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("Approved");
-
                     b.Property<bool>("Ativo")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -243,12 +240,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Aprovado")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false)
-                        .HasColumnName("Approved");
-
                     b.Property<bool>("Ativo")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
@@ -281,8 +272,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
                         .HasColumnName("Type_Service");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Fornecedor");
 
                     b.HasIndex("Id_Departamento");
 
@@ -372,11 +361,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
 
             modelBuilder.Entity("TESTE_MATHEUS_SAMPAIO.Models.SolicitaServicosModel", b =>
                 {
-                    b.HasOne("TESTE_MATHEUS_SAMPAIO.Models.FornecedoresModel", "FornecedoresModel")
-                        .WithMany("SolicitaServicosModel")
-                        .HasForeignKey("Fornecedor")
-                        .IsRequired();
-
                     b.HasOne("TESTE_MATHEUS_SAMPAIO.Models.DepartamentosModel", "DepartamentosModel")
                         .WithMany("SolicitaServicosModel")
                         .HasForeignKey("Id_Departamento")
@@ -393,8 +377,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
                         .IsRequired();
 
                     b.Navigation("DepartamentosModel");
-
-                    b.Navigation("FornecedoresModel");
 
                     b.Navigation("ServicosModel");
 
@@ -425,8 +407,6 @@ namespace TESTE_MATHEUS_SAMPAIO.Migrations
                     b.Navigation("ServicosModel");
 
                     b.Navigation("SolicitaComprasModel");
-
-                    b.Navigation("SolicitaServicosModel");
                 });
 
             modelBuilder.Entity("TESTE_MATHEUS_SAMPAIO.Models.ProdutosModel", b =>

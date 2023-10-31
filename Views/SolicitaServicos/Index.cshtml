@@ -4,17 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoServico)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Observacao)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fornecedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Departamento)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Data_Cadastro)
@@ -23,13 +29,7 @@
                 @Html.DisplayNameFor(model => model.Ativo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoServico)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Departamento)
+                @Html.DisplayNameFor(model => model.Aprovado)
             </th>
             <th></th>
         </tr>
@@ -38,19 +38,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.ServicosModel.Nome_Servico)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Observacao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fornecedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data_Cadastro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ativo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServicosModel.Nome_Servico)
+                @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
@@ -59,9 +53,19 @@
                 @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.Data_Cadastro)
+            </td>
+            <td>
+                @if (item.Ativo) { <p>Sim</p> }
+                else { <p>Não</p> }
+            </td>
+            <td>
+                @if (item.Aprovado) { <p>Aprovado</p> }
+                else { <p>Aguardando Análise</p> }
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
             </td>
         </tr>
 }

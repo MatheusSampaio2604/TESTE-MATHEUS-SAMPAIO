@@ -16,11 +16,13 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
     {
         private readonly DataContext _context;
         private readonly IServicosService _servicosService;
+        private readonly IFornecedoresService _fornecedoresService;
 
-        public ServicosController(DataContext context, IServicosService servicosService)
+        public ServicosController(DataContext context, IServicosService servicosService, IFornecedoresService fornecedoresService)
         {
             _context = context;
             _servicosService = servicosService;
+            _fornecedoresService = fornecedoresService;
         }
 
         // GET: Servicos
@@ -42,9 +44,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         }
 
         // GET: Servicos/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Nome_Fornecedor");
+            var fornecedor = await _fornecedoresService.FindAllAsync();
+            ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ServicosViewModel servicosViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var save = await _servicosService.CreateAsync(servicosViewModel);
 
@@ -63,7 +66,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
                 else return RedirectToAction(nameof(Index));
             }
-            ViewData["Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Nome_Fornecedor", servicosViewModel.Fornecedor);
+
+
+            // var fornecedor = await _fornecedoresService.FindAllAsync();
+            // ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
             return View(servicosViewModel);
         }
 
@@ -75,7 +81,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
             var servicosViewModel = await _servicosService.FindOneAsync(id);
             if (servicosViewModel == null) return NotFound();
 
-            ViewData["Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Nome_Fornecedor", servicosViewModel.Fornecedor);
+            var fornecedor = await _fornecedoresService.FindAllAsync();
+            ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
             return View(servicosViewModel);
         }
 
@@ -104,7 +111,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Fornecedor"] = new SelectList(_context.Fornecedores, "Id", "Nome_Fornecedor", servicosViewModel.Fornecedor);
+            var fornecedor = await _fornecedoresService.FindAllAsync();
+            ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
             return View(servicosViewModel);
         }
 
@@ -115,7 +123,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
 
             var servicosViewModel = await _servicosService.FindOneAsync(id);
-            
+
             if (servicosViewModel == null) return NotFound();
 
             return View(servicosViewModel);
