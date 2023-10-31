@@ -9,201 +9,201 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TESTE_MATHEUS_SAMPAIO
 build_property.RootNamespace = TESTE_MATHEUS_SAMPAIO
-build_property.ProjectDir = c:\Users\CSP0832\Desktop\TESTE MATHEUS SAMPAIO\
+build_property.ProjectDir = C:\UTILS\TESTE-MATHEUS-SAMPAIO\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\CSP0832\Desktop\TESTE MATHEUS SAMPAIO
+build_property.MSBuildProjectDirectory = C:\UTILS\TESTE-MATHEUS-SAMPAIO
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Pages/_ValidationScriptsPartial.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Departamentos/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Departamentos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Departamentos/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Departamentos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Departamentos/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Departamentos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Departamentos/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Departamentos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Departamentos/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Departamentos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0YW1lbnRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Fornecedores/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Fornecedores/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Fornecedores/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Fornecedores/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Fornecedores/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Fornecedores/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Fornecedores/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Fornecedores/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Fornecedores/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Fornecedores/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9ybmVjZWRvcmVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Home/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Home/Privacy.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Home/Solicitacoes.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Home/Solicitacoes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTb2xpY2l0YWNvZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/AtualizaEstoque.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/AtualizaEstoque.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQXR1YWxpemFFc3RvcXVlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/EditarEstoque.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/EditarEstoque.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcRWRpdGFyRXN0b3F1ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Produtos/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Produtos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Servicos/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Servicos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Servicos/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Servicos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Servicos/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Servicos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Servicos/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Servicos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Servicos/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Servicos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vydmljb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Shared/Error.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaCompras/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaCompras/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFDb21wcmFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaCompras/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaCompras/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFDb21wcmFzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaCompras/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaCompras/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFDb21wcmFzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaCompras/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaCompras/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFDb21wcmFzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaCompras/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaCompras/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFDb21wcmFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaCompras/IndexCompraAprovados.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaCompras/IndexCompraAprovados.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFDb21wcmFzXEluZGV4Q29tcHJhQXByb3ZhZG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaServicos/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaServicos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFTZXJ2aWNvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaServicos/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaServicos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFTZXJ2aWNvc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaServicos/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaServicos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFTZXJ2aWNvc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaServicos/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaServicos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFTZXJ2aWNvc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaServicos/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaServicos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFTZXJ2aWNvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/SolicitaServicos/IndexServicoAprovados.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/SolicitaServicos/IndexServicoAprovados.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29saWNpdGFTZXJ2aWNvc1xJbmRleFNlcnZpY29BcHJvdmFkb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Usuarios/Create.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Usuarios/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Usuarios/Delete.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Usuarios/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Usuarios/Details.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Usuarios/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Usuarios/Edit.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Usuarios/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Usuarios/Index.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Usuarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/_ViewImports.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/_ViewStart.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/CSP0832/Desktop/TESTE MATHEUS SAMPAIO/Views/Shared/_Layout.cshtml]
+[C:/UTILS/TESTE-MATHEUS-SAMPAIO/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-y7dvzxom1b
