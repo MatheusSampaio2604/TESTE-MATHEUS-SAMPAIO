@@ -3,88 +3,116 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Codigo_Solicitacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodigoGTIN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fabricante)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ativo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Produto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Fornecedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Usuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Id_Departamento)
-            </th>
-            <th>
-                Situação
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Codigo_Solicitacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoGTIN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fabricante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantidade)
-            </td>
-            <td>item
-                @if (item.Ativo) { <p>Sim</p> }
-                else { <p>Não</p> }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdutosModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
-            </td>
-            <td>
-                @if (item.Aprovado)
-                {
-                    <p>Aprovado</p>
-                }
-                else
-                {
-                    <p>Aguardando Análise</p>
-                }
-            </td>
-            <td>
-                <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
-            </td>
-        </tr>
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Codigo_Solicitacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoGTIN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fabricante)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ativo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Produto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Fornecedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id_Departamento)
+                </th>
+                <th>
+                    Situação
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo_Solicitacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoGTIN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fabricante)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                    <td>
+                        item
+                        @if (item.Ativo)
+                        {
+                            <p>Sim</p>
+                        }
+                        else
+                        {
+                            <p>Não</p>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProdutosModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
+                    </td>
+                    <td>
+                        @if (item.Aprovado)
+                        {
+                            <p>Aprovado</p>
+                        }
+                        else
+                        {
+                            <p>Aguardando Análise</p>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{
+    <div class="empty-list d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="text-center">
+            <div class="loading-spinner "></div>
+            <p id="empty-list-message">Aguarde carregando...</p>
+        </div>
+    </div>
+    <script>
+        setTimeout(function () {
+            var messageElement = document.getElementById("empty-list-message");
+            if (messageElement) {
+                messageElement.textContent = "Não encontrei Solicitações aprovadas";
+            }
+        }, 4000); // 4000 milissegundos (4 segundos)
+    </script>
+
+}
