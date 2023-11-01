@@ -1,34 +1,33 @@
 @model IEnumerable<TESTE_MATHEUS_SAMPAIO.Context.DTO.SolicitaServicosViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    string modelName = typeof(TESTE_MATHEUS_SAMPAIO.Context.DTO.SolicitaServicosViewModel).Name;
+    modelName = modelName.Replace("ViewModel", "").Insert(8, " ");
+    ViewData["Title"] = modelName;
 }
+
+<h1>@ViewData["Title"]</h1>
 
 @if (Model.Count() != 0)
 {
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <thead>
-            <tr>
+            <tr class="text-center">
+                <th></th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TipoServico)
+                    @Html.DisplayNameFor(model => model.Codigo_Solicitacao)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Observacao)
+                    @Html.DisplayNameFor(model => model.ServicosModel.Nome_Servico)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Fornecedor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id_Usuario)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Id_Departamento)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Data_Cadastro)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ativo)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Aprovado)
@@ -40,17 +39,15 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo_Solicitacao)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ServicosModel.Nome_Servico)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Observacao)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.FornecedoresModel.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UsuariosModel.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DepartamentosModel.Nome)
@@ -59,24 +56,10 @@
                         @Html.DisplayFor(modelItem => item.Data_Cadastro)
                     </td>
                     <td>
-                        @if (item.Ativo)
-                        {
-                            <p>Sim</p>
-                        }
-                        else
-                        {
-                            <p>Não</p>
-                        }
-                    </td>
-                    <td>
                         @if (item.Aprovado)
-                        {
-                            <p>Aprovado</p>
-                        }
+                        { <p>Aprovado</p> }
                         else
-                        {
-                            <p>Aguardando Análise</p>
-                        }
+                        { <p>Aguardando Análise</p>}
                     </td>
                     <td>
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |

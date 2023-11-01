@@ -7,6 +7,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Models
     {
 
         public int Id { get; set; }
+        public required string Codigo_Solicitacao { get; set; }
         public int TipoServico { get; set; }
         public required string Observacao { get; set; }
         public int Fornecedor { get; set; }

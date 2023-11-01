@@ -78,7 +78,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             if (ModelState.IsValid)
             {
-                return View(departamentosViewModel);
+                return View("Edit", departamentosViewModel);
             }
             try
             {
@@ -133,7 +133,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             departamentosViewModel.Nome = departamentosViewModel.Nome.ToUpper();
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

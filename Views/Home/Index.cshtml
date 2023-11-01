@@ -1,8 +1,81 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model TESTE_MATHEUS_SAMPAIO.Context.DTO.HomeViewModel
+
+@{
+    ViewData["Title"] = "Pagina Inicial";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="d-flex justify-content-between align-items-center">
+    <h4 class="mt-4"><strong>SERVIÇOS AGUARDANDO APROVAÇÃO:</strong></h4>
+    <a class="btn btn-info align-self-center" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+        asp-controller="SolicitaCompras" asp-action="Index">Ver todos
+    </a>
+    </div>
+
+    <hr/>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="text-center">
+                <th></th>
+                <th> CODIGO SERVIÇO </th>
+                <th> TIPO SERIVÇO </th>
+                <th> FORNECEDOR </th>
+                <th> DEPARTAMENTO </th>
+                <th> DATA CADASTRO </th>
+                <th> APROVADO </th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var servico in Model.Servicos)
+                {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => servico.Id) </td>
+                        <td> @Html.DisplayFor(modelItem => servico.Codigo_Solicitacao) </td>
+                        <td> @Html.DisplayFor(modelItem => servico.ServicosModel.Nome_Servico) </td>
+                        <td> @Html.DisplayFor(modelItem => servico.FornecedoresModel.Nome) </td>
+                        <td> @Html.DisplayFor(modelItem => servico.DepartamentosModel.Nome) </td>
+                        <td> @Html.DisplayFor(modelItem => servico.Data_Cadastro) </td>
+                        <td> @if (servico.Aprovado) { <p>Aprovado</p> } else { <p>Aguardando Análise</p> } </td>
+                    </tr>
+
+                }
+        </tbody>
+    </table>
+
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="mt-4"><strong>PEDIDOS AGUARDANDO APROVAÇÃO:</strong></h4> 
+        <a class="btn btn-info align-self-center" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            asp-controller="SolicitaServicos" asp-action="Index" >Ver todos
+        </a> 
+    </div>
+    <hr/>
+    <table  class="table table-bordered table-striped">
+        <thead>
+            <tr class="text-center">
+                <th></th>
+                <th> CÓDIGO SOLICITAÇÃO </th>
+                <th> CODIGO GTIN </th>
+                <th> PRODUTO </th>
+                <th> FORNECEDOR </th>
+                <th> DEPARTAMENTO </th>
+                <th> APROVADO </th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var pedido in Model.Pedidos)
+                {
+
+                        <tr>
+                            <td> @Html.DisplayFor(modelItem => pedido.Id) </td>
+                            <td> @Html.DisplayFor(modelItem => pedido.Codigo_Solicitacao) </td>
+                            <td> @Html.DisplayFor(modelItem => pedido.CodigoGTIN) </td>
+                            <td> @Html.DisplayFor(modelItem => pedido.ProdutosModel.Nome) </td>
+                            <td> @Html.DisplayFor(modelItem => pedido.FornecedoresModel.Nome) </td>
+                            <td> @Html.DisplayFor(modelItem => pedido.DepartamentosModel.Nome) </td>
+                            <td> @if (pedido.Aprovado) { <p>Aprovado</p> } else { <p>Aguardando Análise</p> } </td>
+                        </tr>
+
+                }
+        </tbody>
+    </table>
+

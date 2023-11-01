@@ -33,7 +33,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            // Outros serviços e configurações aqui
+           
 
             services.AddAutoMapperConfiguration();
             var configuration = new ConfigurationBuilder()

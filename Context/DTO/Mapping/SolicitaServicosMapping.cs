@@ -16,6 +16,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO.Mapping
             builder.HasOne(x => x.FornecedoresModel).WithMany(x => x.SolicitaServicosModel).HasForeignKey(x => x.Fornecedor);
 
             builder.Property(x => x.Id).HasColumnName("Id");
+            builder.Property(x => x.Codigo_Solicitacao).HasColumnName("Code_Request");
             builder.Property(x => x.Observacao).HasColumnName("Observation");
             builder.Property(x => x.Fornecedor).HasColumnName("Supplier");
             builder.Property(x => x.Data_Cadastro).HasColumnName("Date_Register");

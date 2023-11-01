@@ -58,8 +58,12 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ServicosViewModel servicosViewModel)
         {
+            servicosViewModel.Nome_Servico = servicosViewModel.Nome_Servico.ToUpper();
+            servicosViewModel.Descricao_Servico = servicosViewModel.Descricao_Servico.ToUpper();
+            
             if (!ModelState.IsValid)
             {
+
                 var save = await _servicosService.CreateAsync(servicosViewModel);
 
                 if (save == null) return View(servicosViewModel);
@@ -68,8 +72,8 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
             }
 
 
-            // var fornecedor = await _fornecedoresService.FindAllAsync();
-            // ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
+             var fornecedor = await _fornecedoresService.FindAllAsync();
+             ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
             return View(servicosViewModel);
         }
 
@@ -94,9 +98,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         public async Task<IActionResult> Edit(int id, ServicosViewModel servicosViewModel)
         {
             if (id != servicosViewModel.Id) return NotFound();
+            servicosViewModel.Nome_Servico = servicosViewModel.Nome_Servico.ToUpper();
+            servicosViewModel.Descricao_Servico = servicosViewModel.Descricao_Servico.ToUpper();
 
-
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

@@ -63,6 +63,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SolicitaServicosViewModel solicitaServicosViewModel)
         {
+            solicitaServicosViewModel.Observacao = solicitaServicosViewModel.Observacao.ToUpper();
+            solicitaServicosViewModel.Codigo_Solicitacao = await CriaCodigo();
+            solicitaServicosViewModel.Data_Cadastro = DateTime.Now;
+
             if (!ModelState.IsValid)
             {
                 var save = await _solicitaServicosService.CreateAsync(solicitaServicosViewModel);
@@ -103,9 +107,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, SolicitaServicosViewModel solicitaServicosViewModel)
         {
+            solicitaServicosViewModel.Observacao = solicitaServicosViewModel.Observacao.ToUpper();
             if (id != solicitaServicosViewModel.Id) return NotFound();
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
@@ -168,5 +173,35 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
             var aprovados = await _solicitaServicosService.FindAllAsync();
             return View(aprovados.Where(x => x.Aprovado == true));
         }
+
+        private async Task<string> CriaCodigo()
+        {
+            var i = await _solicitaServicosService.FindAllAsync();
+
+            int maiorCodigo = 0;
+
+            if (i.Any())
+            {
+                maiorCodigo = i
+                    .Where(u => !string.IsNullOrEmpty(u.Codigo_Solicitacao) && u.Codigo_Solicitacao.StartsWith("SLT") &&
+                                u.Codigo_Solicitacao.Length >= 8)
+                    .Select(u => int.TryParse(u.Codigo_Solicitacao.Substring(3), out int codigoInt) ? codigoInt : 0)
+                    .Max();
+
+                int proximoNumero = maiorCodigo + 1;
+
+                return $"SLT{proximoNumero:D5}";
+            }
+            else
+            {
+
+                return "SLT00001";
+            }
+
+        }
+
+
+
+
     }
 }
