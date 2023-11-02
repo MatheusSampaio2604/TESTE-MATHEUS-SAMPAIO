@@ -10,6 +10,9 @@ namespace TESTE_MATHEUS_SAMPAIO.Context.DTO
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [DisplayName("CÓDIGO SOLICITAÇÃO")]
+        public required string Codigo_Solicitacao { get; set; }
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         [MaxLength(200)]
         [DisplayName("OBSERVAÇÃO")]
         public required string Observacao { get; set; }

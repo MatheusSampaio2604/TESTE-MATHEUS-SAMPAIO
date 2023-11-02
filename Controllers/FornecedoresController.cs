@@ -57,13 +57,14 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(FornecedoresViewModel fornecedoresViewModel)
         {
+            fornecedoresViewModel.Nome = fornecedoresViewModel.Nome.ToUpper();
             if (!ModelState.IsValid)
             {
                 var created = await _fornecedoresService.CreateAsync(fornecedoresViewModel);
-                if (created != null)
-                    return RedirectToAction(nameof(Index));
-                else
+                if (created == null)
                     return BadRequest(error: "Não foi possivel completar a sua solicitação, Tente Novamente!");
+                else
+                    return RedirectToAction(nameof(Index));
             }
             return View(fornecedoresViewModel);
         }
@@ -96,15 +97,17 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            fornecedoresViewModel.Nome = fornecedoresViewModel.Nome.ToUpper();
+
+            if (!ModelState.IsValid)
             {
                 try
                 {
                     var edited = await _fornecedoresService.EditAsync(fornecedoresViewModel);
-                    if (edited != null)
-                        return RedirectToAction(nameof(Index));
-                    else
+                    if (edited == null)
                         return View(fornecedoresViewModel);
+                    else
+                        return RedirectToAction(nameof(Index));
                 }
                 catch (Exception e)
                 {

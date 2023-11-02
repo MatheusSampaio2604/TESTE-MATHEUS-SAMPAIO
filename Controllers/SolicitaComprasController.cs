@@ -69,6 +69,10 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SolicitaComprasViewModel solicitaComprasViewModel)
         {
+
+            solicitaComprasViewModel.Fabricante = solicitaComprasViewModel.Fabricante.ToUpper();
+            solicitaComprasViewModel.Codigo_Solicitacao = await CriaCodigo();
+
             if (!ModelState.IsValid)
             {
                 var save = await _solicitaComprasService.CreateAsync(solicitaComprasViewModel);
@@ -77,12 +81,11 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 else return RedirectToAction(nameof(Index));
             }
 
-
             var departamento = await _departamentosService.FindAllAsync(); ViewBag.Departamento = departamento.Where(x => x.Ativo == true);
             var fornecedor = await _fornecedoresService.FindAllAsync(); ViewBag.Fornecedor = fornecedor.Where(x => x.Ativo == true);
             var usuario = await _usuariosService.FindAllAsync(); ViewBag.Usuario = usuario.Where(x => x.Ativo == true);
             var produto = await _produtosService.FindAllAsync(); ViewBag.Produto = produto;
-            return View(solicitaComprasViewModel);
+            return View("Create", solicitaComprasViewModel);
         }
 
         // GET: SolicitaCompras/Edit/5
@@ -116,6 +119,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
                 return NotFound();
             }
 
+            solicitaComprasViewModel.Fabricante = solicitaComprasViewModel.Fabricante.ToUpper();
             if (!ModelState.IsValid)
             {
                 try
@@ -182,5 +186,30 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
             var aprovados = await _solicitaComprasService.FindAllAsync();
             return View(aprovados.Where(x => x.Aprovado == true));
         }
+
+        private async Task<string> CriaCodigo()
+        {
+            var i = await _solicitaComprasService.FindAllAsync();
+
+            if (i.Any())
+            {
+                var maiorCodigo = i
+                    .Where(u => !string.IsNullOrEmpty(u.Codigo_Solicitacao) && u.Codigo_Solicitacao.StartsWith("BUY") &&
+                                u.Codigo_Solicitacao.Length >= 8)
+                    .Select(u => int.TryParse(u.Codigo_Solicitacao.Substring(3), out int codigoInt) ? codigoInt : 0)
+                    .Max();
+
+                int proximoNumero = maiorCodigo + 1;
+
+                return $"BUY{proximoNumero:D5}";
+            }
+            else
+            {
+
+                return "BUY00001";
+            }
+        }
+
+
     }
 }

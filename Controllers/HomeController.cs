@@ -9,16 +9,24 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly ISolicitaComprasService _solicitaComprasService;
+    private readonly ISolicitaServicosService _solicitaServicoService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, ISolicitaComprasService solicitaComprasService, ISolicitaServicosService solicitaServicosService)
     {
         _logger = logger;
+        _solicitaComprasService = solicitaComprasService;
+        _solicitaServicoService = solicitaServicosService;
     }
 
-    public IActionResult Index()
+    public ActionResult Index()
     {
-
-        return View();
+        var viewModel = new HomeViewModel
+        {
+            Servicos = ObterDadosDosServicos(),
+            Pedidos = ObterDadosDosPedidos() 
+        };
+        return View(viewModel);
     }
 
     public IActionResult Privacy()
@@ -35,5 +43,17 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public IEnumerable<SolicitaServicosViewModel> ObterDadosDosServicos()
+    {
+        var index = _solicitaServicoService.FindAllAsync().Result;
+        return index.Where(x => x.Aprovado == false);
+    }
+
+    public IEnumerable<SolicitaComprasViewModel> ObterDadosDosPedidos()
+    {
+        var index = _solicitaComprasService.FindAllAsync().Result;
+        return index.Where(x => x.Aprovado == false);
     }
 }

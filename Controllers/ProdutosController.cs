@@ -134,14 +134,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProdutosViewModel produtosViewModel)
         {
-            // if (!ModelState.IsValid)
-            // {
-            //     return View(produtosViewModel);
-            // }
-
-
-
-
+           
             try
             {
                 produtosViewModel.Nome = produtosViewModel.Nome.ToUpper();

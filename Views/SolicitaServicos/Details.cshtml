@@ -1,13 +1,19 @@
 @model TESTE_MATHEUS_SAMPAIO.Context.DTO.SolicitaServicosViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
 <div>
-    <h4>SolicitaServicosModel</h4>
+
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo_Solicitacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Codigo_Solicitacao)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Observacao)
         </dt>

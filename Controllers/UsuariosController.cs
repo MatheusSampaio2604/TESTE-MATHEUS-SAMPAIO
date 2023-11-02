@@ -80,16 +80,19 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         {
 
             usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
+            usuariosViewModel.Matricula = await CriaMatricula();
+
+
             if (ModelState.IsValid) return View(usuariosViewModel);
 
             try
             {
                 var success = await _usuariosService.CreateAsync(usuariosViewModel);
 
-                if (success != null)
-                    return RedirectToAction(nameof(Index));
-                else
+                if (success == null)
                     return BadRequest(error: "Não foi possivel processar sua Solicitação, tente novamente!");
+                else
+                    return RedirectToAction(nameof(Index));
             }
             catch (Exception e)
             {
@@ -129,7 +132,7 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
 
             usuariosViewModel.Nome = usuariosViewModel.Nome.ToUpper();
 
-            if (!ModelState.IsValid) return View(usuariosViewModel);
+            if (ModelState.IsValid) return View("Edit", usuariosViewModel);
 
             try
             {
@@ -186,6 +189,47 @@ namespace TESTE_MATHEUS_SAMPAIO.Controllers
         private bool UsuariosModelExists(int id)
         {
             return (_context.Usuarios?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private async Task<string> CriaMatricula()
+        {
+            char proximaLetra = 'A';
+            int proximoNumero = 0;
+
+            var i = await _usuariosService.FindAllAsync();
+
+            if (i.Any())
+            {
+                int matriculaInt = 0;
+
+                var maiorMatricula = i
+                    .Where(u => !string.IsNullOrEmpty(u.Matricula) && u.Matricula.Length >= 5 && char.IsLetter(u.Matricula[0]) &&
+                                int.TryParse(u.Matricula.Substring(1), out matriculaInt))
+                    .Max(u => matriculaInt);
+
+                if (maiorMatricula >= 0)
+                {
+                    proximaLetra = (char)('A' + (maiorMatricula / 10000));
+                    proximoNumero = (maiorMatricula % 10000) + 1;
+                }
+
+                if (proximoNumero > 9999)
+                {
+                    proximoNumero = 0;
+
+                    if (proximaLetra < 'Z')
+                    {
+                        proximaLetra++;
+                    }
+                    else
+                    {
+                        proximaLetra = 'A';
+                        proximoNumero = 0;
+                    }
+                }
+            }
+
+            return $"{proximaLetra}{proximoNumero:D4}";
         }
     }
 }

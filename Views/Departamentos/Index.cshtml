@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<TESTE_MATHEUS_SAMPAIO.Context.DTO.DepartamentosViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    string modelName = typeof(TESTE_MATHEUS_SAMPAIO.Context.DTO.DepartamentosViewModel).Name;
+    modelName = modelName.Replace("ViewModel", "");
+    ViewData["Title"] = modelName;
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
     <a class="btn btn-success" asp-action="Create">Adicionar Novo</a>
@@ -13,9 +15,9 @@
 
 @if (Model.Count() != 0)
 {
-    <table class="table">
+    <table class="table table-bordered table-striped">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>
                     @Html.DisplayNameFor(model => model.Nome)
                 </th>
